@@ -9,11 +9,11 @@
             margin: 0px;
             padding: 0px;
         }
-        body{cursor: url(cursor.png);auto;}
+        body{cursor: url(cursor.PNG);auto;}
 
 
          .bground {
-        background-image: url('bg.png');
+        background-image: url('bg.PNG');
         background-size: cover;
         background-position: center;
         height: 100vh;
@@ -42,7 +42,7 @@
         transform: translate(-50%, -50%);
         z-index: 5;
         width: 27%;
-        cursor: url('cursor.png'), auto;
+        cursor: url('cursor.PNG'), auto;
         display: none;
     }
         
@@ -51,15 +51,15 @@
 <body>
     <div class="tt">
         <div class="bground"></div> 
-        <img class="f-close" src="close.png" onclick="closeBee()">
-        <img class="f-open" src="open.png">
-       <img class="bee" src="bee.png" onclick="changeCursor()" onclick="deleteBee()">
+        <img class="f-close" src="close.PNG" onclick="closeBee()">
+        <img class="f-open" src="open.PNG">
+       <img class="bee" src="bee.PNG" onclick="changeCursor()" onclick="deleteBee()">
    </div>
        
         <script type="text/javascript">
         	 function changeCursor() {
        
-        document.body.style.cursor = 'url("cursor.png"), auto';
+        document.body.style.cursor = 'url("cursor.PNG"), auto';
     }
             function closeBee() {
                 var fClose = document.querySelector(".f-close");
@@ -76,7 +76,7 @@
             	bee.style.display = "none";
             }
              var beeImage = document.querySelector(".bee");
-    beeImage.addEventListener("click", deleteBee);
+     		beeImage.addEventListener("click", deleteBee);
 
 
            // <![CDATA[
