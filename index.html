@@ -4,50 +4,95 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>꿀벌이를 구해줘!</title>
+
     <style type="text/css">
+        @font-face {
+            font-family: 'DOSPilgiMedium';
+            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/DOSPilgiMedium.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+        }
+
         body, html, .tt {
             margin: 0px;
             padding: 0px;
+            overflow: hidden;
         }
-        body{cursor: url(cursor.PNG);auto;}
 
+        body {
+            cursor: url(cursor.PNG), auto;
+        }
 
-         .bground {
-        background-image: url('bg.PNG');
-        background-size: cover;
-        background-position: center;
-        height: 100vh;
-        width: 100%;
-    }
-    .f-close {
-        position: absolute;
-        top: 72%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 2;
-        cursor: pointer;
-        width: 24%;
-    }
-    .f-open {
-        position: absolute;
-        top: 83%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 2;
-        display: none;
-        width: 50%;
-    }
-    .bee {
-        position: absolute;
-        top: 73%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 5;
-        width: 27%;
-        cursor: url('cursor.PNG'), auto;
-        display: none;
-    }
-        
+        .bground {
+            background-image: url('bg.PNG');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            width: 100%;
+        }
+
+        .f-close {
+            position: absolute;
+            top: 72%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            cursor: pointer;
+            width: 24%;
+        }
+
+        .f-open {
+            position: absolute;
+            top: 83%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            display: none;
+            width: 50%;
+        }
+
+        .bee {
+            position: absolute;
+            top: 73%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 5;
+            width: 27%;
+            cursor: pointer;
+            display: none;
+        }
+
+        .thank-you {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            display: none;
+            font-size: 24px;
+            color: white;
+            font-family: 'DOSPilgiMedium';
+            animation: wiggle 0.8s ease infinite;
+        }
+
+        .save {
+            position: absolute;
+            top: 26%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 10;
+            font-size: 24px;
+            color: white;
+            font-family: 'DOSPilgiMedium';
+        }
+
+        @keyframes wiggle {
+            0% { transform: translate(-50%, -50%) rotate(0deg); }
+            25% { transform: translate(-50%, -50%) rotate(-5deg); }
+            50% { transform: translate(-50%, -50%) rotate(0deg); }
+            75% { transform: translate(-50%, -50%) rotate(5deg); }
+            100% { transform: translate(-50%, -50%) rotate(0deg); }
+        }
     </style>
 </head>
 <body>
@@ -55,33 +100,36 @@
         <div class="bground"></div> 
         <img class="f-close" src="close.PNG" onclick="closeBee()">
         <img class="f-open" src="open.PNG">
-       <img class="bee" src="bee.PNG" onclick="changeCursor()" onclick="deleteBee()">
-   </div>
-       
-        <script type="text/javascript">
-        	 function changeCursor() {
-       
-        document.body.style.cursor = 'url("cursor.PNG"), auto';
-    }
-            function closeBee() {
-                var fClose = document.querySelector(".f-close");
-                var fOpen = document.querySelector(".f-open");
-                var bee = document.querySelector(".bee");
+        <img class="bee" src="bee.PNG" onclick="showThankYou()">
+        <div class="thank-you" id="thank-you">"날 구해줘서 고마워"</div>
+        <div class="save" id="save-me">"날 구해주지 않을래?"</div>
+    </div>
 
-               
-                fClose.style.display = "none";
-                fOpen.style.display = "block";
-                bee.style.display = "block";
-            }
-            function deleteBee(){
-            	 var bee = document.querySelector(".bee");
-            	bee.style.display = "none";
-            }
-             var beeImage = document.querySelector(".bee");
-     		beeImage.addEventListener("click", deleteBee);
+    <script type="text/javascript">
+        function closeBee() {
+            var fClose = document.querySelector(".f-close");
+            var fOpen = document.querySelector(".f-open");
+            var bee = document.querySelector(".bee");
+            var thankYou = document.getElementById("thank-you");
+            var saveMe = document.getElementById("save-me");
 
+            fClose.style.display = "none";
+            fOpen.style.display = "block";
+            bee.style.display = "block";
+            thankYou.style.display = "none";
+            saveMe.style.display = "none";
+        }
 
-           // <![CDATA[
+        function showThankYou() {
+            var bee = document.querySelector(".bee");
+            var thankYou = document.getElementById("thank-you");
+            var saveMe = document.getElementById("save-me");
+
+            bee.style.display = "none";
+            thankYou.style.display = "block";
+            saveMe.style.display = "none";
+        }
+          // <![CDATA[
 var colour="random"; // in addition to "random" can be set to any valid colour eg "#f0f" or "red"
 var sparkles=50;
 
@@ -276,7 +324,6 @@ function newColour() {
   c.sort(function(){return (0.5 - Math.random());});
   return ("rgb("+c[0]+", "+c[1]+", "+c[2]+")");
 }
-        </script>
-    </div>
+    </script>
 </body>
 </html>
